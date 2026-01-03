@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "sync-server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/sync-server.js"
+    },
+    {
+      "src": "/admin",
+      "dest": "/admin.html"
+    },
+    {
+      "src": "/",
+      "dest": "/sync-calendar.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/sync-calendar.html"
+    }
+  ],
+  "functions": {
+    "sync-server.js": {
+      "maxDuration": 30
+    }
+  }
+}
